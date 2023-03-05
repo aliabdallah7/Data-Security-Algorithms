@@ -1,0 +1,24 @@
+E:\Last Year 2nd Smester\Security\Security Package\startupcode\SecurityLibrary\bin\Debug\SecurityLibrary.dll
+E:\Last Year 2nd Smester\Security\Security Package\startupcode\SecurityLibrary\bin\Debug\SecurityLibrary.pdb
+E:\Last Year 2nd Smester\Security\Security Package\startupcode\SecurityLibrary\obj\Debug\SecurityLibrary.csproj.CoreCompileInputs.cache
+E:\Last Year 2nd Smester\Security\Security Package\startupcode\SecurityLibrary\obj\Debug\SecurityLibrary.dll
+E:\Last Year 2nd Smester\Security\Security Package\startupcode\SecurityLibrary\obj\Debug\SecurityLibrary.pdb
+E:\Last Year 2nd Smester\Security\Security Package\startupcode\SecurityLibrary\obj\Debug\SecurityLibrary.csprojAssemblyReference.cache
+C:\Users\GIGABYTE\Downloads\startupcode\SecurityLibrary\bin\Debug\SecurityLibrary.dll
+C:\Users\GIGABYTE\Downloads\startupcode\SecurityLibrary\bin\Debug\SecurityLibrary.pdb
+C:\Users\GIGABYTE\Downloads\startupcode\SecurityLibrary\obj\Debug\SecurityLibrary.csproj.AssemblyReference.cache
+C:\Users\GIGABYTE\Downloads\startupcode\SecurityLibrary\obj\Debug\SecurityLibrary.csproj.CoreCompileInputs.cache
+C:\Users\GIGABYTE\Downloads\startupcode\SecurityLibrary\obj\Debug\SecurityLibrary.dll
+C:\Users\GIGABYTE\Downloads\startupcode\SecurityLibrary\obj\Debug\SecurityLibrary.pdb
+C:\FCIS 3rd grade 2022-2023 2st Term\Data Security\Labs\SecurityPackage[Template]-20230228T222159Z-001\SecurityPackage[Template]\SecurityLibrary\bin\Debug\SecurityLibrary.dll
+C:\FCIS 3rd grade 2022-2023 2st Term\Data Security\Labs\SecurityPackage[Template]-20230228T222159Z-001\SecurityPackage[Template]\SecurityLibrary\bin\Debug\SecurityLibrary.pdb
+C:\FCIS 3rd grade 2022-2023 2st Term\Data Security\Labs\SecurityPackage[Template]-20230228T222159Z-001\SecurityPackage[Template]\SecurityLibrary\obj\Debug\SecurityLibrary.csproj.AssemblyReference.cache
+C:\FCIS 3rd grade 2022-2023 2st Term\Data Security\Labs\SecurityPackage[Template]-20230228T222159Z-001\SecurityPackage[Template]\SecurityLibrary\obj\Debug\SecurityLibrary.csproj.CoreCompileInputs.cache
+C:\FCIS 3rd grade 2022-2023 2st Term\Data Security\Labs\SecurityPackage[Template]-20230228T222159Z-001\SecurityPackage[Template]\SecurityLibrary\obj\Debug\SecurityLibrary.dll
+C:\FCIS 3rd grade 2022-2023 2st Term\Data Security\Labs\SecurityPackage[Template]-20230228T222159Z-001\SecurityPackage[Template]\SecurityLibrary\obj\Debug\SecurityLibrary.pdb
+C:\FCIS 3rd grade 2022-2023 2st Term\Data Security\Labs\SecurityPackage[Template]\SecurityLibrary\bin\Debug\SecurityLibrary.dll
+C:\FCIS 3rd grade 2022-2023 2st Term\Data Security\Labs\SecurityPackage[Template]\SecurityLibrary\bin\Debug\SecurityLibrary.pdb
+C:\FCIS 3rd grade 2022-2023 2st Term\Data Security\Labs\SecurityPackage[Template]\SecurityLibrary\obj\Debug\SecurityLibrary.csproj.AssemblyReference.cache
+C:\FCIS 3rd grade 2022-2023 2st Term\Data Security\Labs\SecurityPackage[Template]\SecurityLibrary\obj\Debug\SecurityLibrary.csproj.CoreCompileInputs.cache
+C:\FCIS 3rd grade 2022-2023 2st Term\Data Security\Labs\SecurityPackage[Template]\SecurityLibrary\obj\Debug\SecurityLibrary.dll
+C:\FCIS 3rd grade 2022-2023 2st Term\Data Security\Labs\SecurityPackage[Template]\SecurityLibrary\obj\Debug\SecurityLibrary.pdb
