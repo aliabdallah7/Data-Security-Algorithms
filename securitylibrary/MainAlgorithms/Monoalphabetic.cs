@@ -12,11 +12,11 @@ namespace SecurityLibrary
         {
             //  throw new NotImplementedException();
             string key = null,
-                emptykey = "                          ",
-                alpha = "abcdefghijklmnopqrstuvwxyz",
-                cipher = cipherText.ToLower();
+            emptykey = "                          ",
+            alpha = "abcdefghijklmnopqrstuvwxyz",
+            cipher = cipherText.ToLower();
             char[] keye = emptykey.ToCharArray(),
-                text = plainText.ToCharArray();
+            text = plainText.ToCharArray();
 
             //delete repeated charcters from the plaintext
             for (int i = 0; i < plainText.Length; i++)
