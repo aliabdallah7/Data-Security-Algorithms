@@ -147,11 +147,6 @@ namespace SecurityLibrary
             // Remove spaces and non-alphabetic characters from the plaintext
             plainText = new string(plainText.Where(char.IsLetter).ToArray()).ToLower();
 
-            // Pad the plaintext with 'x' if necessary
-            if (plainText.Length % 2 == 1)
-            {
-                plainText += "x";
-            }
 
             // Replace any pair of identical letters with 'x'
             for (int i = 0; i < plainText.Length - 1; i += 2)
@@ -160,6 +155,13 @@ namespace SecurityLibrary
                 {
                     plainText = plainText.Insert(i + 1, "x");
                 }
+            }
+
+
+            // Pad the plaintext with 'x' if necessary
+            if (plainText.Length % 2 == 1)
+            {
+                plainText += "x";
             }
 
             // Encrypt the plaintext
@@ -208,6 +210,7 @@ namespace SecurityLibrary
 
             Console.WriteLine(cipherText.ToUpper(), "\n\n");
             return cipherText.ToUpper();
+
         }
     }
 }

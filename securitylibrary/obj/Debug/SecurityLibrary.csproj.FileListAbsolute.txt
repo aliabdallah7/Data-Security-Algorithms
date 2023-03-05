@@ -22,3 +22,9 @@ C:\FCIS 3rd grade 2022-2023 2st Term\Data Security\Labs\SecurityPackage[Template
 C:\FCIS 3rd grade 2022-2023 2st Term\Data Security\Labs\SecurityPackage[Template]\SecurityLibrary\obj\Debug\SecurityLibrary.csproj.CoreCompileInputs.cache
 C:\FCIS 3rd grade 2022-2023 2st Term\Data Security\Labs\SecurityPackage[Template]\SecurityLibrary\obj\Debug\SecurityLibrary.dll
 C:\FCIS 3rd grade 2022-2023 2st Term\Data Security\Labs\SecurityPackage[Template]\SecurityLibrary\obj\Debug\SecurityLibrary.pdb
+C:\My Projects\Data-Security-Algorithms\SecurityLibrary\obj\Debug\SecurityLibrary.csproj.AssemblyReference.cache
+C:\My Projects\Data-Security-Algorithms\SecurityLibrary\obj\Debug\SecurityLibrary.csproj.CoreCompileInputs.cache
+C:\My Projects\Data-Security-Algorithms\SecurityLibrary\obj\Debug\SecurityLibrary.dll
+C:\My Projects\Data-Security-Algorithms\SecurityLibrary\obj\Debug\SecurityLibrary.pdb
+C:\My Projects\Data-Security-Algorithms\SecurityLibrary\bin\Debug\SecurityLibrary.dll
+C:\My Projects\Data-Security-Algorithms\SecurityLibrary\bin\Debug\SecurityLibrary.pdb
