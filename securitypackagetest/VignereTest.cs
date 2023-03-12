@@ -62,7 +62,6 @@ namespace SecurityPackageTest
         {
             AutokeyVigenere algorithm = new AutokeyVigenere();
             string key = algorithm.Analyse(mainPlain, mainCipherAuto);
-            Console.WriteLine("ali    " + key); // my test
             Assert.IsTrue(key.Equals(mainKey, StringComparison.InvariantCultureIgnoreCase));
         }
 
