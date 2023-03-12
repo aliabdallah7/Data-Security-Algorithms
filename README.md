@@ -1,5 +1,5 @@
 # Data-Security-Algorithms
-Computer Security algorithms in C#
+Data Security algorithms in C#
 
 ## List of Algorithms
 - ✅ Ceaser
