@@ -5,3 +5,4 @@ Computer Security algorithms in C#
 - ✅ Ceaser
 - ✅ Monoalphabetic
 - ✅ PlayFair
+- ✅ AutokeyVigenere
