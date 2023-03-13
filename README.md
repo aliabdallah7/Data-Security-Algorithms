@@ -6,3 +6,4 @@ Data Security algorithms in C#
 - ✅ Monoalphabetic
 - ✅ PlayFair
 - ✅ AutokeyVigenere
+- ✅ RailFence
