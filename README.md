@@ -7,3 +7,4 @@ Data Security algorithms in C#
 - ✅ PlayFair
 - ✅ AutokeyVigenere
 - ✅ RailFence
+- ✅ RepeatingKeyVigenere
