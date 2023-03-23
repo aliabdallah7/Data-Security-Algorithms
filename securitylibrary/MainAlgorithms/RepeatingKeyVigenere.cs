@@ -10,28 +10,47 @@ namespace SecurityLibrary
     {
         public string Analyse(string plainText, string cipherText)
         {
-            string key = "";
+            // Convert the ciphertext to lowercase to handle plaintext and ciphertext that contain both uppercase and lowercase letters
             cipherText = cipherText.ToLower();
-            int z = plainText.Length - cipherText.Length;
-            if (z>0)
-            {
-                key = cipherText;
-                for (int i = 0; i < z; i++)
-                {
-                    int c = i % cipherText.Length;
-                    key = key + cipherText[c];
-                }
-            }
-            else if(z<0)
-            {
-                key = cipherText.Substring(0, cipherText.Length + z);
 
-            }
-            else
+            // Initialize variables for the key and the alphabet string
+            string key = "";
+            string alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+            //indc -> index of the cipherS char 
+            //indp_ -> index of the plainS char
+            int indc, indp_;
+
+            // Iterate over each character in the cipherText to recover the key
+            for (int i = 0; i < cipherText.Length; i++)
             {
-                key = cipherText;
+                // Get the index of the current character in the plaintext and the ciphertext
+                indc = alphabet.IndexOf(cipherText[i]);
+                indp_ = alphabet.IndexOf(plainText[i]);
+
+                // Calculate the index of the decrypted character by subtracting the index of the plainText character from the index of the ciphertext character, then adding 26 and taking the modulus of 26 to wrap around to the end of the alphabet if necessary
+                int keyChar = (indc - indp_ + 26) % 26;
+
+                // Add the decrypted character to the key string
+                key += alphabet[keyChar];
             }
-  
+
+            // Initialize a temporary key with the first character of the recovered key
+            string temp_key = "";
+            temp_key = temp_key +key[0];
+
+            // Iterate over the remaining characters in the recovered key to try to guess the full key
+            for (int i = 1; i < key.Length; i++)
+            {
+                // If the encrypted plaintext matches the actual ciphertext with the current key, return the current key
+                if (cipherText.Equals(Encrypt(plainText, temp_key)))
+                    return temp_key;
+
+                // Add the next character of the recovered key to the temporary key
+                temp_key = temp_key + key[i];
+            }
+
+            // Return the recovered key if it could not be guessed more precisely
             return key;
         }
 

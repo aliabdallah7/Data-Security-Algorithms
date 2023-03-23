@@ -34,21 +34,18 @@ namespace SecurityLibrary
             }
 
             // Initialize a temporary key with the first character of the recovered key
-            string temp = "";
-            temp = temp + key[0];
+            string temp_key = "";
+            temp_key = temp_key + key[0];
 
             // Iterate over the remaining characters in the recovered key to try to guess the full key
-            int klength = key.Length;
-            for (int i = 1; i < klength; i++)
+            for (int i = 1; i < key.Length; i++)
             {
                 // If the encrypted plaintext matches the actual ciphertext with the current key, return the current key
-                if (cipherText.Equals(Encrypt(plainText, temp)))
-                {
-                    return temp;
-                }
+                if (cipherText.Equals(Encrypt(plainText, temp_key)))
+                    return temp_key;
 
                 // Add the next character of the recovered key to the temporary key
-                temp = temp + key[i];
+                temp_key = temp_key + key[i];
             }
 
             // Return the recovered key if it could not be guessed more precisely
