@@ -8,3 +8,4 @@ Data Security algorithms in C#
 - ✅ AutokeyVigenere
 - ✅ RailFence
 - ✅ RepeatingKeyVigenere
+- ✅ Columnar
