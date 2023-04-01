@@ -54,6 +54,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ColumnarTest.cs" />
+    <Compile Include="DES3DESTest.cs" />
     <Compile Include="HillCipherTest.cs" />
     <Compile Include="PlayfairTest.cs" />
     <Compile Include="MonoalphabeticTest.cs" />
