@@ -151,160 +151,132 @@ namespace SecurityLibrary.DES
 
         int toInt2(string input)
         {
-            if (input == "00")
+            switch (input)
             {
-                return 0;
-            }
-            else if (input == "01")
-            {
-                return 1;
-            }
-            else if (input == "10")
-            {
-                return 2;
-            }
-            else
-            {
-                return 3;
+                case "00":
+                    return 0;
+                    break;
+                case "01":
+                    return 1;
+                    break;
+                case "10":
+                    return 2;
+                    break;
+                default:
+                    return 3;
+                    break;
             }
         }
 
         int toInt4(string input)
         {
-            if (input == "0000")
+            switch (input)
             {
-                return 0;
-            }
-            else if (input == "0001")
-            {
-                return 1;
-            }
-            else if (input == "0010")
-            {
-                return 2;
-            }
-            else if (input == "0011")
-            {
-                return 3;
-            }
-            else if (input == "0100")
-            {
-                return 4;
-            }
-            else if (input == "0101")
-            {
-                return 5;
-            }
-            else if (input == "0110")
-            {
-                return 6;
-            }
-            else if (input == "0111")
-            {
-                return 7;
-            }
-            else if (input == "1000")
-            {
-                return 8;
-            }
-            else if (input == "1001")
-            {
-                return 9;
-            }
-            else if (input == "1010")
-            {
-                return 10;
-            }
-            else if (input == "1011")
-            {
-                return 11;
-            }
-            else if (input == "1100")
-            {
-                return 12;
-            }
-            else if (input == "1101")
-            {
-                return 13;
-            }
-            else if (input == "1110")
-            {
-                return 14;
-            }
-            else
-            {
-                return 15;
+                case "0000":
+                    return 0;
+                    break;
+                case "0001":
+                    return 1;
+                    break;
+                case "0010":
+                    return 2;
+                    break;
+                case "0011":
+                    return 3;
+                    break;
+                case "0100":
+                    return 4;
+                    break;
+                case "0101":
+                    return 5;
+                    break;
+                case "0110":
+                    return 6;
+                    break;
+                case "0111":
+                    return 7;
+                    break;
+                case "1000":
+                    return 8;
+                    break;
+                case "1001":
+                    return 9;
+                    break;
+                case "1010":
+                    return 10;
+                    break;
+                case "1011":
+                    return 11;
+                    break;
+                case "1100":
+                    return 12;
+                    break;
+                case "1101":
+                    return 13;
+                    break;
+                case "1110":
+                    return 14;
+                    break;
+                default:
+                    return 15;
+                    break;
             }
 
         }
 
         char toHEX(string input)
         {
-            if (input == "0000")
+            switch(input)
             {
-                return '0';
+                case "0000":
+                    return '0';
+                    break;
+                case "0001":
+                    return '1';
+                    break;
+                case "0010":
+                    return '2';
+                    break;
+                case "0011":
+                    return '3';
+                    break;
+                case "0100":
+                    return '4';
+                    break;
+                case "0101":
+                    return '5';
+                    break;
+                case "0110":
+                    return '6';
+                    break;
+                case "0111":
+                    return '7';
+                    break;
+                case "1000":
+                    return '8';
+                    break;
+                case "1001":
+                    return '9';
+                    break;
+                case "1010":
+                    return 'A';
+                    break;
+                case "1011":
+                    return 'B';
+                    break;
+                case "1100":
+                    return 'C';
+                    break;
+                case "1101":
+                    return 'D';
+                    break;
+                case "1110":
+                    return 'E';
+                    break;
+                default:
+                    return 'F';
+                    break;
             }
-            else if (input == "0001")
-            {
-                return '1';
-            }
-            else if (input == "0010")
-            {
-                return '2';
-            }
-            else if (input == "0011")
-            {
-                return '3';
-            }
-            else if (input == "0100")
-            {
-                return '4';
-            }
-            else if (input == "0101")
-            {
-                return '5';
-            }
-            else if (input == "0110")
-            {
-                return '6';
-            }
-            else if (input == "0111")
-            {
-                return '7';
-            }
-            else if (input == "1000")
-            {
-                return '8';
-            }
-            else if (input == "1001")
-            {
-                return '9';
-            }
-            else if (input == "1010")
-            {
-                return 'A';
-            }
-            else if (input == "1011")
-            {
-                return 'B';
-            }
-            else if (input == "1100")
-            {
-                return 'C';
-            }
-            else if (input == "1101")
-            {
-                return 'D';
-            }
-            else if (input == "1110")
-            {
-                return 'E';
-            }
-            else
-            {
-                return 'F';
-            }
-
         }
 
 
@@ -312,7 +284,7 @@ namespace SecurityLibrary.DES
         public override string Encrypt(string plainText, string key)
         {
             string cipherText = String.Empty;
-            int q = 2;//
+            int q = 2;
 
             int r = 0;
 
@@ -359,7 +331,8 @@ namespace SecurityLibrary.DES
 
             while (e < 16)
             {
-                for (int j = 0; j < LeftShifts[e]; j++)
+                int j = 0;
+                while ( j < LeftShifts[e])
                 {
                     rightMost = shifted_C[0];
                     shifted_C = shifted_C.Remove(0, 1);
@@ -368,6 +341,7 @@ namespace SecurityLibrary.DES
                     rightMost = shifted_D[0];
                     shifted_D = shifted_D.Remove(0, 1);
                     shifted_D += rightMost;
+                    j++;
                 }
                 C[e + 1] = shifted_C;
                 D[e + 1] = shifted_D;
@@ -377,7 +351,8 @@ namespace SecurityLibrary.DES
             //calculate Kn
             string[] K = new string[16];
 
-            while (r < K.Length)
+            int len = K.Length;
+            while (r < len)
             {
                 K[r] = C[r + 1] + D[r + 1];
                 r++;
@@ -385,13 +360,15 @@ namespace SecurityLibrary.DES
 
             //apply PC2
             StringBuilder[] roundKey = new StringBuilder[16];
-            for (int i = 0; i < K.Length; i++)
+            int i = 0;
+            while (i < len)
             {
                 roundKey[i] = new StringBuilder();
                 for (int j = 0; j < PC2.Length; j++)
                 {
                     roundKey[i].Append(K[i][PC2[j] - 1]);
                 }
+                i++;
             }
 
             //start encrypting plain text
@@ -467,9 +444,9 @@ namespace SecurityLibrary.DES
             string R16L16 = R[16] + L[16];
             StringBuilder binaryCipherText = new StringBuilder();
             //apply p^-1
-            for (int i = 0; i < IPinverse.Length; i++)//here1
+            for (int p = 0; p < IPinverse.Length; p++)//here1
             {
-                binaryCipherText.Append(R16L16[IPinverse[i] - 1]);
+                binaryCipherText.Append(R16L16[IPinverse[p] - 1]);
             }
 
             //conver output to HEX
