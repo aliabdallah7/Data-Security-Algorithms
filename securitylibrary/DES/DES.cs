@@ -409,33 +409,35 @@ namespace SecurityLibrary.DES
                 sboxOutput = new StringBuilder();
                 permutationOutput = new StringBuilder();
                 //expand R
-                for (int j = 0; j < ExpansionMat.Length; j++)//here1
+                for (int jj = 0; jj < ExpansionMat.Length; jj++)//here1
                 {
-                    expandedR.Append(R[a - 1][ExpansionMat[j] - 1]);
+                    expandedR.Append(R[a - 1][ExpansionMat[jj] - 1]);
                 }
                 // E(Ri) apli_xop Ki
-                for (int j = 0; j < expandedR.Length; j++)//here1
+                for (int jj = 0; jj < expandedR.Length; jj++)//here1
                 {
-                    apli_xopOutput.Append(apli_xop(expandedR[j], roundKey[a - 1][j]));
+                    apli_xopOutput.Append(apli_xop(expandedR[jj], roundKey[a - 1][jj]));
                 }
                 // apply sbox
-                for (int j = 0; j < 8; j++)//here1
+                int j = 0;
+                while (j < 8 )//here1
                 {
                     Bn = apli_xopOutput.ToString().Substring(6 * j, 6);
                     row = toInt2(Bn[0] + string.Empty + Bn[5]);
                     column = toInt4(Bn.Substring(1, 4));
                     sboxOutput.Append(toBin[SBoxes[j, (row * 16) + column]]);
+                    j++;
                 }
                 //apply permutation
-                for (int j = 0; j < P.Length; j++)//here1
+                for (int z = 0; z < P.Length; z++)//here1
                 {
-                    permutationOutput.Append(sboxOutput[P[j] - 1]);
+                    permutationOutput.Append(sboxOutput[P[z] - 1]);
                 }
                 //calculate Ri
                 apli_xopOutput = new StringBuilder();
-                for (int j = 0; j < permutationOutput.Length; j++)//here1
+                for (int jj = 0; jj < permutationOutput.Length; jj++)//here1
                 {
-                    apli_xopOutput.Append(apli_xop(L[a - 1][j], permutationOutput[j]));
+                    apli_xopOutput.Append(apli_xop(L[a - 1][jj], permutationOutput[jj]));
                 }
                 R[a] = apli_xopOutput.ToString();
                 a++;
@@ -466,11 +468,10 @@ namespace SecurityLibrary.DES
 
             //convert key to string of 1's and 0's
             StringBuilder binaryKey = new StringBuilder();
-            int i = 2;
-            while (i < key.Length)
+            
+            for (int i = 2; i < key.Length; i++)
             {
                 binaryKey.Append(toBin[int.Parse(key[i].ToString(), NumberStyles.HexNumber, CultureInfo.InvariantCulture)]);
-                i++;
             }
 
             // apply PC_1
@@ -515,11 +516,11 @@ namespace SecurityLibrary.DES
 
             //calculate Kn
             string[] K = new string[16];
-            int temp = 0;
-            while (temp < K.Length)
+            
+            for (int temp = 0; temp < K.Length; temp++)
             {
                 K[temp] = c_n[temp + 1] + d_n[temp + 1];
-                temp++;
+                
             }
 
             //How to find pc2 &apply pc2
@@ -614,7 +615,8 @@ namespace SecurityLibrary.DES
                 }
                 //How calculate Ri
                 xor = new StringBuilder();
-                for (int RI1 = 0; RI1 < permutation.Length; RI1++)
+                int permLen = permutation.Length;
+                for (int RI1 = 0; RI1 < permLen; RI1++)
                 {
                     xor.Append(apli_xop(L[rep - 1][RI1], permutation[RI1]));
                 }
@@ -624,11 +626,11 @@ namespace SecurityLibrary.DES
             string R_L_Sixteen = R[16] + L[16];
             StringBuilder binaryPlainText = new StringBuilder();
             //apply p^-1
-            int p_Minus = 0;
-            while (p_Minus < IPinverse.Length)
+            int lennIP = IPinverse.Length;
+            for (int p_Minus = 0; p_Minus < lennIP; p_Minus++)
             {
                 binaryPlainText.Append(R_L_Sixteen[IPinverse[p_Minus] - 1]);
-                p_Minus++;
+                
             }
 
             //conver output to HEX
