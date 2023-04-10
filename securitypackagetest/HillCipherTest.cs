@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SecurityLibrary;
 using System.Collections.Generic;
 
@@ -144,7 +143,7 @@ namespace SecurityPackageTest
 
         #endregion
 
-       
+
         #region error test cases (key with no inverse) 
 
         [TestMethod]
@@ -168,6 +167,6 @@ namespace SecurityPackageTest
 
         #endregion
 
-               
+
     }
 }
