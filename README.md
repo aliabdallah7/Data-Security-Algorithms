@@ -9,3 +9,4 @@ Data Security algorithms in C#
 - ✅ RailFence
 - ✅ RepeatingKeyVigenere
 - ✅ Columnar
+- ✅ DES (Data Encryption Standard)
