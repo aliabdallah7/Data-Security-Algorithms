@@ -28,3 +28,9 @@ C:\My Projects\Data-Security-Algorithms\SecurityLibrary\obj\Debug\SecurityLibrar
 C:\My Projects\Data-Security-Algorithms\SecurityLibrary\obj\Debug\SecurityLibrary.pdb
 C:\My Projects\Data-Security-Algorithms\SecurityLibrary\bin\Debug\SecurityLibrary.dll
 C:\My Projects\Data-Security-Algorithms\SecurityLibrary\bin\Debug\SecurityLibrary.pdb
+F:\project\Data-Security-Algorithms\SecurityLibrary\bin\Debug\SecurityLibrary.dll
+F:\project\Data-Security-Algorithms\SecurityLibrary\bin\Debug\SecurityLibrary.pdb
+F:\project\Data-Security-Algorithms\SecurityLibrary\obj\Debug\SecurityLibrary.csproj.AssemblyReference.cache
+F:\project\Data-Security-Algorithms\SecurityLibrary\obj\Debug\SecurityLibrary.csproj.CoreCompileInputs.cache
+F:\project\Data-Security-Algorithms\SecurityLibrary\obj\Debug\SecurityLibrary.dll
+F:\project\Data-Security-Algorithms\SecurityLibrary\obj\Debug\SecurityLibrary.pdb

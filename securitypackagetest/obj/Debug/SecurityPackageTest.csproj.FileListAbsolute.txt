@@ -43,3 +43,12 @@ C:\My Projects\Data-Security-Algorithms\SecurityPackageTest\obj\Debug\SecurityPa
 C:\My Projects\Data-Security-Algorithms\SecurityPackageTest\obj\Debug\SecurityPackageTest.csproj.CopyComplete
 C:\My Projects\Data-Security-Algorithms\SecurityPackageTest\obj\Debug\SecurityPackageTest.dll
 C:\My Projects\Data-Security-Algorithms\SecurityPackageTest\obj\Debug\SecurityPackageTest.pdb
+F:\project\Data-Security-Algorithms\SecurityPackageTest\bin\Debug\SecurityPackageTest.dll
+F:\project\Data-Security-Algorithms\SecurityPackageTest\bin\Debug\SecurityPackageTest.pdb
+F:\project\Data-Security-Algorithms\SecurityPackageTest\bin\Debug\SecurityLibrary.dll
+F:\project\Data-Security-Algorithms\SecurityPackageTest\bin\Debug\SecurityLibrary.pdb
+F:\project\Data-Security-Algorithms\SecurityPackageTest\obj\Debug\SecurityPackageTest.csproj.AssemblyReference.cache
+F:\project\Data-Security-Algorithms\SecurityPackageTest\obj\Debug\SecurityPackageTest.csproj.CoreCompileInputs.cache
+F:\project\Data-Security-Algorithms\SecurityPackageTest\obj\Debug\SecurityPackageTest.csproj.CopyComplete
+F:\project\Data-Security-Algorithms\SecurityPackageTest\obj\Debug\SecurityPackageTest.dll
+F:\project\Data-Security-Algorithms\SecurityPackageTest\obj\Debug\SecurityPackageTest.pdb
