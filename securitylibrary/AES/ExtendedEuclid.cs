@@ -1,9 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace SecurityLibrary.AES
 {
     public class ExtendedEuclid
@@ -35,12 +29,16 @@ namespace SecurityLibrary.AES
 
             }
 
-            result = (b2 + temp) % temp;
-            return result;
+            if (b3 == 0)
+                return -1;
 
+            if (b3 == 1)
+            {
+                result = (b2 + temp) % temp;
+                return result;
+            }
 
-
-
+            return -1;
 
         }
     }

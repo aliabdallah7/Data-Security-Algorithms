@@ -10,3 +10,5 @@ Data Security algorithms in C#
 - ✅ RepeatingKeyVigenere
 - ✅ Columnar
 - ✅ DES (Data Encryption Standard)
+- ✅ AES (Advanced Encryption Standard)
+- ✅ Extended Euclidean
