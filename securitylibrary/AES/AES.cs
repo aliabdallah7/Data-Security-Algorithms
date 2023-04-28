@@ -9,7 +9,8 @@ namespace SecurityLibrary.AES
     /// </summary>
     public class AES : CryptographicTechnique
     {
-        private string[,] sBox = new string[,]
+       public static string[,] previous_key = new string[4, 4];
+        private static string[,] sBox = new string[,]
         {
             {"63","7c","77","7b","f2","6b","6f","c5","30","01","67","2b","fe","d7","ab","76"},
             {"ca","82","c9","7d","fa","59","47","f0","ad","d4","a2","af","9c","a4","72","c0"},
@@ -29,7 +30,26 @@ namespace SecurityLibrary.AES
             {"8c","a1","89","0d","bf","e6","42","68","41","99","2d","0f","b0","54","bb","16"}
         };
 
+        private static string[,] Inverse_S_box = new string[16, 16] {
 
+        {"52", "09", "6a", "d5", "30", "36", "a5", "38", "bf", "40", "a3", "9e", "81", "f3", "d7", "fb"},
+        {"7c", "e3", "39", "82", "9b", "2f", "ff", "87", "34", "8e", "43", "44", "c4", "de", "e9", "cb"},
+        {"54", "7b", "94", "32", "a6", "c2", "23", "3d", "ee", "4c", "95","0b", "42", "fa", "c3", "4e"},
+        {"08", "2e", "a1", "66", "28", "d9", "24", "b2", "76", "5b", "a2", "49", "6d", "8b", "d1", "25"},
+        {"72", "f8", "f6", "64", "86", "68", "98", "16", "d4", "a4", "5c", "cc", "5d", "65", "b6", "92"},
+        {"6c", "70", "48", "50", "fd", "ed", "b9", "da", "5e", "15", "46", "57", "a7", "8d", "9d", "84"},
+        {"90", "d8", "ab", "00", "8c", "bc", "d3", "0a", "f7", "e4", "58", "05", "b8", "b3", "45", "06"},
+        {"d0", "2c", "1e", "8f", "ca", "3f", "0f", "02", "c1", "af", "bd", "03", "01", "13", "8a", "6b"},
+        {"3a", "91", "11", "41", "4f", "67", "dc", "ea", "97", "f2", "cf", "ce", "f0", "b4", "e6", "73"},
+        {"96", "ac", "74", "22", "e7", "ad", "35", "85", "e2", "f9", "37", "e8", "1c", "75", "df", "6e"},
+        {"47", "f1","1a", "71", "1d", "29", "c5", "89", "6f", "b7", "62", "0e","aa", "18", "be", "1b"},
+        {"fc", "56", "3e", "4b", "c6", "d2", "79", "20", "9a", "db", "c0", "fe", "78", "cd", "5a", "f4"},
+        {"1f", "dd", "a8", "33", "88", "07", "c7", "31", "b1", "12", "10", "59", "27", "80", "ec", "5f"},
+        {"60", "51", "7f", "a9", "19", "b5", "4a", "0d", "2d", "e5", "7a", "9f", "93", "c9", "9c", "ef"},
+        {"a0", "e0", "3b", "4d", "ae", "2a", "f5", "b0", "c8", "eb", "bb", "3c", "83", "53", "99", "61"},
+        {"17", "2b", "04", "7e", "ba", "77", "d6", "26", "e1", "69", "14", "63", "55", "21", "0c", "7d"}
+
+        };
 
 
         private string[,] mixColumnMatrix = new string[,]
@@ -43,7 +63,7 @@ namespace SecurityLibrary.AES
 
 
 
-        private string[,] Rcon = new string[,]
+        private static string[,] Rcon = new string[,]
         {
             {"01","02","04","08","10","20","40","80","1b","36"},
             {"00","00","00","00","00","00","00","00","00","00"},
@@ -52,7 +72,265 @@ namespace SecurityLibrary.AES
         };
 
 
+        public static string[,] ShiftRowsInverse(string[,] matrix)
+        {
+            string temp = "";
+            int col = 3;
 
+            for (int i = 1; i < 4; i++)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    temp = matrix[i, col];
+                    matrix[i, col] = matrix[i, col - 1];
+                    matrix[i, col - 1] = matrix[i, col - 2];
+                    matrix[i, col - 2] = matrix[i, col - 3];
+                    matrix[i, col - 3] = temp;
+                }
+
+            }
+
+            Console.WriteLine("inverse shift rows before return ---->");
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    Console.Write(matrix[i, j] + "  ");
+                }
+                Console.WriteLine();
+            }
+
+            return matrix;
+        }
+        public static string GetBinary(string x)
+        {
+            x = x.ToUpper();
+
+            string result = "";
+
+            for (int i = 0; i < x.Length; i++)
+            {
+                switch (x[i])
+                {
+                    case '0':
+                        result += "0000";
+                        break;
+                    case '1':
+                        result += "0001";
+                        break;
+                    case '2':
+                        result += "0010";
+                        break;
+                    case '3':
+                        result += "0011";
+                        break;
+                    case '4':
+                        result += "0100";
+                        break;
+                    case '5':
+                        result += "0101";
+                        break;
+                    case '6':
+                        result += "0110";
+                        break;
+                    case '7':
+                        result += "0111";
+                        break;
+                    case '8':
+                        result += "1000";
+                        break;
+                    case '9':
+                        result += "1001";
+                        break;
+                    case 'A':
+                        result += "1010";
+                        break;
+                    case 'B':
+                        result += "1011";
+                        break;
+                    case 'C':
+                        result += "1100";
+                        break;
+                    case 'D':
+                        result += "1101";
+                        break;
+                    case 'E':
+                        result += "1110";
+                        break;
+                    case 'F':
+                        result += "1111";
+                        break;
+                }
+            }
+            return result;
+        }
+
+        public static string GetHexa(string x)
+        {
+
+            string result = "";
+            string[] r = new string[2];
+
+            for (int i = 0; i < x.Length / 2; i++)
+            {
+
+                r[0] += x[i];
+            }
+
+            for (int i = 4; i < x.Length; i++)
+            {
+                r[1] += x[i];
+            }
+
+            for (int i = 0; i < r.Length; i++)
+            {
+                switch (r[i])
+                {
+                    case "0000":
+                        result += "0";
+                        break;
+                    case "0001":
+                        result += "1";
+                        break;
+                    case "0010":
+                        result += "2";
+                        break;
+                    case "0011":
+                        result += "3";
+                        break;
+                    case "0100":
+                        result += "4";
+                        break;
+                    case "0101":
+                        result += "5";
+                        break;
+                    case "0110":
+                        result += "6";
+                        break;
+                    case "0111":
+                        result += "7";
+                        break;
+                    case "1000":
+                        result += "8";
+                        break;
+                    case "1001":
+                        result += "9";
+                        break;
+                    case "1010":
+                        result += "A";
+                        break;
+                    case "1011":
+                        result += "B";
+                        break;
+                    case "1100":
+                        result += "C";
+                        break;
+                    case "1101":
+                        result += "D";
+                        break;
+                    case "1110":
+                        result += "E";
+                        break;
+                    case "1111":
+                        result += "F";
+                        break;
+                }
+            }
+            return result;
+        }
+
+        public static int[] GetDecimal(string s)
+        {
+            s = s.ToLower();
+
+            int[] result = new int[2];
+
+            string temp = "";
+
+            for (int i = 0; i < 2; i++)
+            {
+                temp += s[i];
+                switch (temp)
+                {
+                    case "a":
+                        result[i] = 10;
+                        break;
+                    case "b":
+                        result[i] = 11;
+                        break;
+                    case "c":
+                        result[i] = 12;
+                        break;
+                    case "d":
+                        result[i] = 13;
+                        break;
+                    case "e":
+                        result[i] = 14;
+                        break;
+                    case "f":
+                        result[i] = 15;
+                        break;
+                    default:
+                        result[i] = Int16.Parse(temp);
+                        break;
+                }
+                temp = "";
+            }
+
+            return result;
+        }
+
+        public static string[,] InverseSubBytes(string[,] matrix)
+        {
+
+            string[,] result = new string[4, 4];
+            int[] indices = new int[2];
+            string temp = "";
+
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+
+                    matrix[i, j] = matrix[i, j].ToLower();
+
+                    for (int k = 0; k < 2; k++)
+                    {
+                        temp += matrix[i, j][k];
+
+                        switch (temp)
+                        {
+                            case "a":
+                                indices[k] = 10;
+                                break;
+                            case "b":
+                                indices[k] = 11;
+                                break;
+                            case "c":
+                                indices[k] = 12;
+                                break;
+                            case "d":
+                                indices[k] = 13;
+                                break;
+                            case "e":
+                                indices[k] = 14;
+                                break;
+                            case "f":
+                                indices[k] = 15;
+                                break;
+                            default:
+                                indices[k] = Int16.Parse(temp);
+                                break;
+                        }
+                        temp = "";
+                    }
+
+                    result[i, j] = Inverse_S_box[indices[0], indices[1]];
+                }
+            }
+
+            return result;
+        }
         // This function takes a string as input and returns a 2D string array.
         private string[,] stringToMatrix(string textString)
         {
@@ -200,7 +478,57 @@ namespace SecurityLibrary.AES
             return result;
         }
 
+        public static string[,] SubBytesOneColumn(string[,] matrix)
+        {
+            string[,] result = new string[4, 1];
+            int[] indices = new int[2];
 
+            string temp = "";
+
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 1; j++)
+                {
+
+                    matrix[i, j] = matrix[i, j].ToLower();
+
+                    for (int k = 0; k < 2; k++)
+                    {
+                        temp += matrix[i, j][k];
+
+                        switch (temp)
+                        {
+                            case "a":
+                                indices[k] = 10;
+                                break;
+                            case "b":
+                                indices[k] = 11;
+                                break;
+                            case "c":
+                                indices[k] = 12;
+                                break;
+                            case "d":
+                                indices[k] = 13;
+                                break;
+                            case "e":
+                                indices[k] = 14;
+                                break;
+                            case "f":
+                                indices[k] = 15;
+                                break;
+                            default:
+                                indices[k] = Int16.Parse(temp);
+                                break;
+                        }
+                        temp = "";
+                    }
+
+                    result[i, j] = sBox[indices[0], indices[1]];
+                }
+            }
+
+            return result;
+        }
 
         /// <summary>
         /// Computes the bitwise XOR operation between two hexadecimal strings.
@@ -208,7 +536,7 @@ namespace SecurityLibrary.AES
         /// <param name="firstString">The first hexadecimal string.</param>
         /// <param name="secondString">The second hexadecimal string.</param>
         /// <returns>The resulting hexadecimal string of the XOR operation.</returns>
-        private string XOR(string firstString, string secondString)
+        public string XOR(string firstString, string secondString)
         {
             // Convert the first hexadecimal string to an integer.
             int first = Convert.ToInt32(firstString, 16);
@@ -226,7 +554,26 @@ namespace SecurityLibrary.AES
             return result.PadLeft(2, '0');
         }
 
+        public static string XORR(string s1, string s2)
+        {
+            string result = "";
 
+            for (int i = 0; i < s1.Length; i++)
+            {
+                // 0001 0000
+                // 1000 0010
+                if (s1[i].CompareTo(s2[i]) == 0)
+                {
+                    result += "0";
+                }
+                else
+                {
+                    result += "1";
+                }
+            }
+
+            return result;
+        }
         /// <summary>
         /// Rotates the elements of the given string array one position to the left.
         /// </summary>
@@ -350,7 +697,28 @@ namespace SecurityLibrary.AES
         }
 
 
+        public static string[,] AddRoundKey(string[,] state, string[,] key)
+        {
+            string[,] ResultMatrix = new string[4, 4];
 
+            string s, k, xor_result;
+
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    // Converting to binary
+                    s = GetBinary(state[i, j]);
+                    k = GetBinary(key[i, j]);
+                    // XORing the result
+                    xor_result = XORR(s, k);
+                    // Converting to hexadecimal
+                    ResultMatrix[i, j] = GetHexa(xor_result);
+                }
+            }
+
+            return ResultMatrix;
+        }
         /// <summary>
         /// Computes the bitwise XOR operation between two binary strings.
         /// </summary>
@@ -425,6 +793,109 @@ namespace SecurityLibrary.AES
         }
 
 
+        public static string Multiply_By_0e(string s)
+        {
+            //((((x×2)+x)×2)+x)×2
+            string result = XORR(Multiply_By_02(s), s);
+
+            result = XORR(Multiply_By_02(result), s);
+            result = Multiply_By_02(result);
+            return result;
+        }
+
+        public static string Multiply_By_0d(string s)
+        {
+            //((((x×2)+x)×2)×2)+x
+            string result = XORR(Multiply_By_02(s), s);
+
+            result = Multiply_By_02(Multiply_By_02(result));
+            result = XORR(result, s);
+
+            return result;
+        }
+
+        public static string Multiply_By_0B(string s)
+        {
+            //((((x×2)×2)+x)×2)+x
+            string result = Multiply_By_02(s);
+            result = XORR(Multiply_By_02(result), s);
+            result = XORR(Multiply_By_02(result), s);
+            return result;
+        }
+        public static string Multiply_By_09(string s)
+        {
+            //(((x×2)×2)×2)+x
+            string result = Multiply_By_02(s);
+            result = Multiply_By_02(result);
+            result = XORR(Multiply_By_02(result), s);
+            return result;
+        }
+
+        public static string Multiply_By_01(string s)
+        {
+            return s;
+        }
+
+        public static string Multiply_By_02(string s)
+        {
+
+            string result = "";
+
+            // 1000 0010
+            string ms_bit = "";
+            ms_bit += s[0];
+
+            char[] char_arr = new char[s.Length];
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                char_arr[i] = s[i];
+            }
+
+            string shifted_s = "";
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (i == s.Length - 1)
+                {
+                    shifted_s += "0";
+                }
+                else
+                {
+                    char_arr[i] = char_arr[i + 1];
+                    shifted_s += char_arr[i];
+                }
+            }
+
+            result = shifted_s;
+
+            string xor_result = "";
+
+            if (ms_bit.Equals("1"))
+            {
+                xor_result = XORR(shifted_s, "00011011");
+                result = xor_result;
+            }
+            else
+            {
+                result = shifted_s;
+            }
+
+            return result;
+
+        }
+
+        public static string Multiply_By_03(string s)
+        {
+
+            string result = "";
+
+            result = Multiply_By_02(s);
+
+            result = XORR(result, s);
+
+            return result;
+        }
 
         /* This function takes a 4x4 matrix of hexadecimal strings as input
            and returns a new matrix after performing the MixColumns operation
@@ -511,13 +982,685 @@ namespace SecurityLibrary.AES
             // Return the matrix after performing 'Mix Columns' Operation
             return result;
         }
+        public static string[,] MixColumnsInverse(string[,] matrix)
+        {
+            string[,] temp = new string[4, 4];
+            string res = "";
+
+            for (int cols = 0; cols < 4; cols++)
+            {
+                res = XORR(Multiply_By_0e(GetBinary(matrix[0, cols])), Multiply_By_0B(GetBinary(matrix[1, cols])));
+                res = XORR(res, Multiply_By_0d(GetBinary(matrix[2, cols])));
+                res = XORR(res, Multiply_By_09(GetBinary(matrix[3, cols])));
+
+                temp[0, cols] = GetHexa(res);
+
+                res = "";
+
+                res = XORR(Multiply_By_09(GetBinary(matrix[0, cols])), Multiply_By_0e(GetBinary(matrix[1, cols])));
+                res = XORR(res, Multiply_By_0B(GetBinary(matrix[2, cols])));
+                res = XORR(res, Multiply_By_0d(GetBinary(matrix[3, cols])));
+
+                temp[1, cols] = GetHexa(res);
+
+                res = "";
+
+                res = XORR(Multiply_By_0d(GetBinary(matrix[0, cols])), Multiply_By_09(GetBinary(matrix[1, cols])));
+                res = XORR(res, Multiply_By_0e(GetBinary(matrix[2, cols])));
+                res = XORR(res, Multiply_By_0B(GetBinary(matrix[3, cols])));
+
+                temp[2, cols] = GetHexa(res);
+
+                res = "";
+
+                res = XORR(Multiply_By_0B(GetBinary(matrix[0, cols])), Multiply_By_0d(GetBinary(matrix[1, cols])));
+                res = XORR(res, Multiply_By_09(GetBinary(matrix[2, cols])));
+                res = XORR(res, Multiply_By_0e(GetBinary(matrix[3, cols])));
+
+                temp[3, cols] = GetHexa(res);
 
 
+            }
+
+            return temp;
+
+        }
+        public static string[,] KeySchedule_GetFirstCoulmn(string[,] key, int round)
+        {
+            string[,] result = new string[4, 1];
+            string[,] column_matrix = new string[4, 1];
+            int lastcolumnIndex = 3, i = 0;
+            string temp = "";
 
 
+            // for the first column ONLY
+
+            // take the last column rotating down once (RotWord)
+
+            temp = key[i, lastcolumnIndex];
+            key[i, lastcolumnIndex] = key[i + 1, lastcolumnIndex];
+            key[i + 1, lastcolumnIndex] = key[i + 2, lastcolumnIndex];
+            key[i + 2, lastcolumnIndex] = key[i + 3, lastcolumnIndex];
+            key[i + 3, lastcolumnIndex] = temp;
+
+            // Caling SubBytesOneColumn
+
+            for (int j = 0; j < 4; j++)
+            {
+                column_matrix[j, 0] = key[j, lastcolumnIndex];
+            }
+
+            for (int k = 0; k < 4; k++)
+            {
+                Console.WriteLine(column_matrix[k, 0]);
+            }
+            column_matrix = SubBytesOneColumn(column_matrix);
+
+            for (int l = 0; l < 4; l++)
+            {
+                Console.WriteLine(column_matrix[l, 0]);
+
+            }
+            // XOR three columns
+
+            string[,] columnRcon = new string[4, 1];
+
+            for (int k = 0; k < 4; k++)
+            {
+                columnRcon[k, 0] = Rcon[k, round];
+            }
+
+            string[,] key_column = new string[4, 1];
+
+            for (int m = 0; m < 4; m++)
+            {
+                key_column[m, 0] = key[m, 0];
+            }
+
+            string s1, s2, s3, xor_result;
+
+            for (int n = 0; n < 4; n++)
+            {
+                for (int l = 0; l < 1; l++)
+                {
+                    s1 = GetBinary(key_column[n, l]);
+                    s2 = GetBinary(column_matrix[n, l]);
+                    xor_result = XORR(s1, s2);
+
+                    s3 = GetBinary(columnRcon[n, l]);
+                    xor_result = XORR(xor_result, s3);
+
+                    result[n, l] = GetHexa(xor_result);
+                }
+            }
+
+            for (int n = 0; n < 4; n++)
+            {
+
+                Console.WriteLine(result[n, 0]);
+            }
+
+            return result;
+        }
+
+        public static string[,] Get_Second_Column(string[,] second_column_in_key, string[,] first_column_in_new_key)
+        {
+
+            string[,] second_column = new string[4, 1];
+
+            string s1 = "", s2 = "", xor_result = "";
+
+            for (int i = 0; i < 4; i++)
+            {
+                s1 = GetBinary(second_column_in_key[i, 0]);
+                s2 = GetBinary(first_column_in_new_key[i, 0]);
+
+                xor_result = XORR(s1, s2);
+
+                second_column[i, 0] = GetHexa(xor_result);
+
+            }
+
+            return second_column;
+
+        }
+
+        public static string[,] Get_Third_Column(string[,] third_column_in_key, string[,] second_column_in_new_key)
+        {
+
+            string[,] third_column = new string[4, 1];
+
+            string s1 = "", s2 = "", xor_result = "";
+
+            for (int i = 0; i < 4; i++)
+            {
+                s1 = GetBinary(third_column_in_key[i, 0]);
+                s2 = GetBinary(second_column_in_new_key[i, 0]);
+
+                xor_result = XORR(s1, s2);
+
+                third_column[i, 0] = GetHexa(xor_result);
+
+            }
+
+            return third_column;
+
+        }
+
+        public static string[,] Get_Fourth_Column(string[,] fourth_column_in_key, string[,] third_column_in_new_key)
+        {
+
+            string[,] fourth_column = new string[4, 1];
+
+            string s1 = "", s2 = "", xor_result = "";
+
+            for (int i = 0; i < 4; i++)
+            {
+                s1 = GetBinary(fourth_column_in_key[i, 0]);
+                s2 = GetBinary(third_column_in_new_key[i, 0]);
+
+                xor_result = XORR(s1, s2);
+
+                fourth_column[i, 0] = GetHexa(xor_result);
+
+            }
+
+            return fourth_column;
+
+        }
+
+        public static string[,] KeySchedule(string[,] key_matrix, int round)
+        {
+
+            string[,] result = new string[4, 4];
+
+            string[,] last_column = new string[4, 1];
+
+            for (int i = 0; i < 4; i++)
+            {
+                last_column[i, 0] = key_matrix[i, 3];
+            }
+
+            // Get first Column
+
+            string[,] first_column = new string[4, 1];
+
+            first_column = KeySchedule_GetFirstCoulmn(key_matrix, round);
+
+            Console.WriteLine("The first column : ");
+            for (int i = 0; i < 4; i++)
+            {
+                result[i, 0] = first_column[i, 0];
+            }
+
+            // Get rest
+
+            // Get second column
+
+            string[,] second_column_in_key = new string[4, 1];
+            for (int i = 0; i < 4; i++)
+            {
+                second_column_in_key[i, 0] = key_matrix[i, 1];
+            }
+
+            string[,] second_column_in_new_key = Get_Second_Column(second_column_in_key, first_column);
+
+            for (int i = 0; i < 4; i++)
+            {
+                result[i, 1] = second_column_in_new_key[i, 0];
+            }
+
+            // Get third column
+
+            string[,] third_column_in_key = new string[4, 1];
+            for (int i = 0; i < 4; i++)
+            {
+                third_column_in_key[i, 0] = key_matrix[i, 2];
+            }
+
+            string[,] third_column_in_new_key = Get_Third_Column(third_column_in_key, second_column_in_new_key);
+
+            for (int i = 0; i < 4; i++)
+            {
+                result[i, 2] = third_column_in_new_key[i, 0];
+            }
+            // Get fourth column
+
+            string[,] fourth_column_in_new_key = Get_Fourth_Column(last_column, third_column_in_new_key);
+
+            for (int i = 0; i < 4; i++)
+            {
+                result[i, 3] = fourth_column_in_new_key[i, 0];
+            }
+
+            Console.WriteLine("The result matrix: ");
+            for (int row = 0; row < 4; row++)
+            {
+                for (int col = 0; col < 4; col++)
+                {
+                    Console.Write(result[row, col] + "  ");
+                }
+                Console.WriteLine();
+            }
+
+            previous_key = result;
+
+            return result;
+
+        }
         public override string Decrypt(string cipherText, string key)
         {
-            throw new NotImplementedException();
+            
+
+             string pl_txt = "0x";
+
+            string[,] ct_matrix = new string[4, 4];
+
+            string temp1 = "";
+
+            int k = 2;
+
+            for (int j = 0; j < 4; j++)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    if (k < cipherText.Length)
+                    {
+                        temp1 += cipherText[k];
+                        temp1 += cipherText[k + 1];
+
+                        ct_matrix[i, j] = temp1;
+                        k += 2;
+                        temp1 = "";
+                    }
+
+                }
+
+            }
+
+            k = 2;
+
+            Console.WriteLine("The matrix of cipherText");
+
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    Console.Write(ct_matrix[i, j] + "   ");
+                }
+                Console.WriteLine();
+            }
+
+            string[,] key_matrix = new string[4, 4];
+            string temp2 = "";
+
+            for (int j = 0; j < 4; j++)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    if (k < key.Length)
+                    {
+                        temp2 += key[k];
+                        temp2 += key[k + 1];
+
+                        key_matrix[i, j] = temp2;
+                        k += 2;
+                        temp2 = "";
+                    }
+
+                }
+
+
+            }
+            Console.WriteLine("The matrix of key");
+
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    Console.Write(key_matrix[i, j] + "  ");
+                }
+                Console.WriteLine();
+            }
+
+            previous_key = key_matrix;
+
+            string[,] round1key = new string[4, 4];
+            string[,] round2key = new string[4, 4];
+            string[,] round3key = new string[4, 4];
+            string[,] round4key = new string[4, 4];
+            string[,] round5key = new string[4, 4];
+            string[,] round6key = new string[4, 4];
+            string[,] round7key = new string[4, 4];
+            string[,] round8key = new string[4, 4];
+            string[,] round9key = new string[4, 4];
+            string[,] round10key = new string[4, 4];
+
+            Console.WriteLine("-------Observe from here the keys : ------");
+
+            for (int i = 0; i < 10; i++)
+            {
+                if (i == 0)
+                {
+
+                    round1key = KeySchedule(previous_key,i);
+                }
+                else if (i == 1)
+                {
+                    round2key = KeySchedule(previous_key, i);
+                }
+                else if (i == 2)
+                {
+                    round3key = KeySchedule(previous_key, i);
+                }
+                else if (i == 3)
+                {
+                    round4key = KeySchedule(previous_key, i);
+                }
+                else if (i == 4)
+                {
+                    round5key = KeySchedule(previous_key, i);
+                }
+                else if (i == 5)
+                {
+                    round6key = KeySchedule(previous_key, i);
+                }
+                else if (i == 6)
+                {
+                    round7key = KeySchedule(previous_key, i);
+                }
+                else if (i == 7)
+                {
+                    round8key = KeySchedule(previous_key, i);
+                }
+                else if (i == 8)
+                {
+                    round9key = KeySchedule(previous_key, i);
+                }
+                else if (i == 9)
+                {
+                    round10key = KeySchedule(previous_key, i);
+                }
+
+            }
+
+
+
+            Console.WriteLine("----------The end of keys : ------");
+
+            // Add round key
+
+            string[,] AddRoundKey_result = new string[4, 4];
+
+            AddRoundKey_result = AddRoundKey(ct_matrix, round10key);
+
+            Console.WriteLine("first Add round key : ----");
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    Console.Write(AddRoundKey_result[i, j] + "  ");
+                }
+                Console.WriteLine();
+            }
+
+            string[,] input_of_invShiftRows = new string[4, 4];
+
+            input_of_invShiftRows = AddRoundKey_result;
+
+            string[,] InverseShiftRows_result = new string[4, 4];
+
+            string[,] InverseSubBytes_result = new string[4, 4];
+
+            string[,] inverseMixColumns_result = new string[4, 4];
+
+            for (int i = 0; i < 9; i++)
+            {
+                // Inverse shift rows
+
+                InverseShiftRows_result = ShiftRowsInverse(AddRoundKey_result);
+
+                Console.WriteLine("inverse shift rows result round " + i + ": ----");
+
+                for (int m = 0; m < 4; m++)
+                {
+                    for (int j = 0; j < 4; j++)
+                    {
+                        Console.Write(InverseShiftRows_result[m, j] + "  ");
+                    }
+                    Console.WriteLine();
+                }
+
+                // Inverse sub bytes
+
+                InverseSubBytes_result = InverseSubBytes(InverseShiftRows_result);
+
+                Console.WriteLine("inverse sub bytes result round " + i + ": ----");
+
+                for (int m = 0; m < 4; m++)
+                {
+                    for (int j = 0; j < 4; j++)
+                    {
+                        Console.Write(InverseSubBytes_result[m, j] + "  ");
+                    }
+                    Console.WriteLine();
+                }
+
+                // Add round key
+
+                Console.Write("roundkey 9 before switch: ----");
+                for (int m = 0; m < 4; m++)
+                {
+                    for (int j = 0; j < 4; j++)
+                    {
+                        Console.Write(round9key[m, j] + "  ");
+                    }
+                    Console.WriteLine();
+                }
+
+                string temp = "";
+                int col = 3, row = 0;
+
+
+
+                switch (i)
+                {
+                    case 0:
+                        {
+                            temp = round9key[row + 3, col];
+                            round9key[row + 3, col] = round9key[row + 2, col];
+                            round9key[row + 2, col] = round9key[row + 1, col];
+                            round9key[row + 1, col] = round9key[row, col];
+                            round9key[row, col] = temp;
+                            temp = "";
+                            AddRoundKey_result = AddRoundKey(InverseSubBytes_result, round9key);
+                            break;
+                        }
+                    case 1:
+                        {
+                            temp = round8key[row + 3, col];
+                            round8key[row + 3, col] = round8key[row + 2, col];
+                            round8key[row + 2, col] = round8key[row + 1, col];
+                            round8key[row + 1, col] = round8key[row, col];
+                            round8key[row, col] = temp;
+                            temp = "";
+                            AddRoundKey_result = AddRoundKey(InverseSubBytes_result, round8key);
+                            break;
+                        }
+                    case 2:
+                        {
+                            temp = round7key[row + 3, col];
+                            round7key[row + 3, col] = round7key[row + 2, col];
+                            round7key[row + 2, col] = round7key[row + 1, col];
+                            round7key[row + 1, col] = round7key[row, col];
+                            round7key[row, col] = temp;
+                            temp = "";
+                            AddRoundKey_result = AddRoundKey(InverseSubBytes_result, round7key);
+                            break;
+                        }
+                    case 3:
+                        {
+                            temp = round6key[row + 3, col];
+                            round6key[row + 3, col] = round6key[row + 2, col];
+                            round6key[row + 2, col] = round6key[row + 1, col];
+                            round6key[row + 1, col] = round6key[row, col];
+                            round6key[row, col] = temp;
+                            temp = "";
+                            AddRoundKey_result = AddRoundKey(InverseSubBytes_result, round6key);
+                            break;
+                        }
+                    case 4:
+                        {
+                            temp = round5key[row + 3, col];
+                            round5key[row + 3, col] = round5key[row + 2, col];
+                            round5key[row + 2, col] = round5key[row + 1, col];
+                            round5key[row + 1, col] = round5key[row, col];
+                            round5key[row, col] = temp;
+                            temp = "";
+                            AddRoundKey_result = AddRoundKey(InverseSubBytes_result, round5key);
+                            break;
+                        }
+                    case 5:
+                        {
+                            temp = round4key[row + 3, col];
+                            round4key[row + 3, col] = round4key[row + 2, col];
+                            round4key[row + 2, col] = round4key[row + 1, col];
+                            round4key[row + 1, col] = round4key[row, col];
+                            round4key[row, col] = temp;
+                            temp = "";
+                            AddRoundKey_result = AddRoundKey(InverseSubBytes_result, round4key);
+                            break;
+                        }
+                    case 6:
+                        {
+                            temp = round3key[row + 3, col];
+                            round3key[row + 3, col] = round3key[row + 2, col];
+                            round3key[row + 2, col] = round3key[row + 1, col];
+                            round3key[row + 1, col] = round3key[row, col];
+                            round3key[row, col] = temp;
+                            temp = "";
+                            AddRoundKey_result = AddRoundKey(InverseSubBytes_result, round3key);
+                            break;
+                        }
+                    case 7:
+                        {
+                            temp = round2key[row + 3, col];
+                            round2key[row + 3, col] = round2key[row + 2, col];
+                            round2key[row + 2, col] = round2key[row + 1, col];
+                            round2key[row + 1, col] = round2key[row, col];
+                            round2key[row, col] = temp;
+                            temp = "";
+                            AddRoundKey_result = AddRoundKey(InverseSubBytes_result, round2key);
+                            break;
+                        }
+                    case 8:
+                        {
+                            temp = round1key[row + 3, col];
+                            round1key[row + 3, col] = round1key[row + 2, col];
+                            round1key[row + 2, col] = round1key[row + 1, col];
+                            round1key[row + 1, col] = round1key[row, col];
+                            round1key[row, col] = temp;
+                            temp = "";
+                            AddRoundKey_result = AddRoundKey(InverseSubBytes_result, round1key);
+                            break;
+                        }
+                }
+
+                for (int m = 0; m < 4; m++)
+                {
+                    for (int j = 0; j < 4; j++)
+                    {
+                        Console.Write(round9key[m, j] + "  ");
+                    }
+                    Console.WriteLine();
+                }
+
+                for (int m = 0; m < 4; m++)
+                {
+                    for (int j = 0; j < 4; j++)
+                    {
+                        Console.Write(AddRoundKey_result[m, j] + "  ");
+                    }
+                    Console.WriteLine();
+                }
+
+                // Inverse mix columns
+
+                inverseMixColumns_result = MixColumnsInverse(AddRoundKey_result);
+
+                Console.WriteLine("inverse mix columns result round " + i + ": ----");
+
+                for (int m = 0; m < 4; m++)
+                {
+                    for (int j = 0; j < 4; j++)
+                    {
+                        Console.Write(inverseMixColumns_result[m, j] + "  ");
+                    }
+                    Console.WriteLine();
+                }
+
+                AddRoundKey_result = inverseMixColumns_result;
+
+            }
+
+            // Inverse shift rows
+
+            InverseShiftRows_result = ShiftRowsInverse(inverseMixColumns_result);
+
+            Console.WriteLine("outer inverse shift rows result : ---");
+            for (int m = 0; m < 4; m++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    Console.Write(InverseShiftRows_result[m, j] + "  ");
+                }
+                Console.WriteLine();
+            }
+            // Inverse sub bytes
+
+            InverseSubBytes_result = InverseSubBytes(InverseShiftRows_result);
+            Console.WriteLine("outer inverse sub bytes result : ---");
+            for (int m = 0; m < 4; m++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    Console.Write(InverseSubBytes_result[m, j] + "  ");
+                }
+                Console.WriteLine();
+            }
+            // Add round key
+
+            string t = "";
+            int r = 0, c = 3;
+
+            t = key_matrix[r + 3, c];
+            key_matrix[r + 3, c] = key_matrix[r + 2, c];
+            key_matrix[r + 2, c] = key_matrix[r + 1, c];
+            key_matrix[r + 1, c] = key_matrix[r, c];
+            key_matrix[r, c] = t;
+            t = "";
+
+            Console.WriteLine("outer key matrix result : ---");
+            for (int m = 0; m < 4; m++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    Console.Write(key_matrix[m, j] + "  ");
+                }
+                Console.WriteLine();
+            }
+
+            AddRoundKey_result = AddRoundKey(InverseSubBytes_result, key_matrix);
+
+            for (int j = 0; j < 4; j++)
+            {
+                for (int m = 0; m < 4; m++)
+                {
+                    pl_txt += AddRoundKey_result[m, j];
+                }
+            }
+
+            return pl_txt;
         }
 
 
