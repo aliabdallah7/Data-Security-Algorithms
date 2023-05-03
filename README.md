@@ -12,3 +12,5 @@ Data Security algorithms in C#
 - ✅ DES (Data Encryption Standard)
 - ✅ AES (Advanced Encryption Standard)
 - ✅ Extended Euclidean
+- ✅ RC4 (Rivest Cipher 4)
+
