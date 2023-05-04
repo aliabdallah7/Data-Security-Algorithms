@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="AES\AES.cs" />
     <Compile Include="AES\ExtendedEuclid.cs" />
+    <Compile Include="ELGAMAL.cs" />
     <Compile Include="ICryptographic_Technique.cs" />
     <Compile Include="MainAlgorithms\Columnar.cs" />
     <Compile Include="DES\DES.cs" />
