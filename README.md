@@ -5,6 +5,7 @@ Data Security algorithms in C#
 - ✅ Ceaser
 - ✅ Monoalphabetic
 - ✅ PlayFair
+- ✅ HillCipher
 - ✅ AutokeyVigenere
 - ✅ RailFence
 - ✅ RepeatingKeyVigenere
@@ -13,4 +14,5 @@ Data Security algorithms in C#
 - ✅ AES (Advanced Encryption Standard)
 - ✅ Extended Euclidean
 - ✅ RC4 (Rivest Cipher 4)
+- ✅ RSA
 
