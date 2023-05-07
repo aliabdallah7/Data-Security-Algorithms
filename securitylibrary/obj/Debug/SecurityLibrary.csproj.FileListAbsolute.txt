@@ -34,3 +34,9 @@ F:\project\Data-Security-Algorithms\SecurityLibrary\obj\Debug\SecurityLibrary.cs
 F:\project\Data-Security-Algorithms\SecurityLibrary\obj\Debug\SecurityLibrary.csproj.CoreCompileInputs.cache
 F:\project\Data-Security-Algorithms\SecurityLibrary\obj\Debug\SecurityLibrary.dll
 F:\project\Data-Security-Algorithms\SecurityLibrary\obj\Debug\SecurityLibrary.pdb
+C:\Users\Hp\Documents\GitHub\Data-Security-Algorithms\SecurityLibrary\bin\Debug\SecurityLibrary.dll
+C:\Users\Hp\Documents\GitHub\Data-Security-Algorithms\SecurityLibrary\bin\Debug\SecurityLibrary.pdb
+C:\Users\Hp\Documents\GitHub\Data-Security-Algorithms\SecurityLibrary\obj\Debug\SecurityLibrary.csproj.AssemblyReference.cache
+C:\Users\Hp\Documents\GitHub\Data-Security-Algorithms\SecurityLibrary\obj\Debug\SecurityLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Hp\Documents\GitHub\Data-Security-Algorithms\SecurityLibrary\obj\Debug\SecurityLibrary.dll
+C:\Users\Hp\Documents\GitHub\Data-Security-Algorithms\SecurityLibrary\obj\Debug\SecurityLibrary.pdb

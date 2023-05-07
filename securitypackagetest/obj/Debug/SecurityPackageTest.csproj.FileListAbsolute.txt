@@ -52,3 +52,12 @@ F:\project\Data-Security-Algorithms\SecurityPackageTest\obj\Debug\SecurityPackag
 F:\project\Data-Security-Algorithms\SecurityPackageTest\obj\Debug\SecurityPackageTest.csproj.CopyComplete
 F:\project\Data-Security-Algorithms\SecurityPackageTest\obj\Debug\SecurityPackageTest.dll
 F:\project\Data-Security-Algorithms\SecurityPackageTest\obj\Debug\SecurityPackageTest.pdb
+C:\Users\Hp\Documents\GitHub\Data-Security-Algorithms\SecurityPackageTest\bin\Debug\SecurityPackageTest.dll
+C:\Users\Hp\Documents\GitHub\Data-Security-Algorithms\SecurityPackageTest\bin\Debug\SecurityPackageTest.pdb
+C:\Users\Hp\Documents\GitHub\Data-Security-Algorithms\SecurityPackageTest\bin\Debug\SecurityLibrary.dll
+C:\Users\Hp\Documents\GitHub\Data-Security-Algorithms\SecurityPackageTest\bin\Debug\SecurityLibrary.pdb
+C:\Users\Hp\Documents\GitHub\Data-Security-Algorithms\SecurityPackageTest\obj\Debug\SecurityPackageTest.csproj.AssemblyReference.cache
+C:\Users\Hp\Documents\GitHub\Data-Security-Algorithms\SecurityPackageTest\obj\Debug\SecurityPackageTest.csproj.CoreCompileInputs.cache
+C:\Users\Hp\Documents\GitHub\Data-Security-Algorithms\SecurityPackageTest\obj\Debug\SecurityPackageTest.csproj.CopyComplete
+C:\Users\Hp\Documents\GitHub\Data-Security-Algorithms\SecurityPackageTest\obj\Debug\SecurityPackageTest.dll
+C:\Users\Hp\Documents\GitHub\Data-Security-Algorithms\SecurityPackageTest\obj\Debug\SecurityPackageTest.pdb
