@@ -15,4 +15,6 @@ Data Security algorithms in C#
 - ✅ Extended Euclidean
 - ✅ RC4 (Rivest Cipher 4)
 - ✅ RSA
+- ✅ ELGAMAL
+- ✅ Diffie–Hellman (DH)
 
