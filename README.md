@@ -10,7 +10,7 @@
 <br>
 
 ## Introduction
-Implementations of a set of computer security algorithms in [`C#`](https://docs.microsoft.com/en-us/dotnet/csharp/) and the test cases for each algorithm we've done. 
+We have developed implementations of a comprehensive set of computer security algorithms in [`C#`](https://docs.microsoft.com/en-us/dotnet/csharp/), accompanied by meticulously designed test cases for each algorithm.
 
 ## List of Algorithms
 - ✅ Ceaser
@@ -30,13 +30,25 @@ Implementations of a set of computer security algorithms in [`C#`](https://docs.
 - ✅ Diffie–Hellman (DH)
 - ❌ Triple DES
 - ❌ MD5 (Message-Digest)
+<br>
+
+## Contributors (Team Members)
+
+We would like to acknowledge the dedicated efforts and contributions of our team members in making this project a success:
+
+- [Ali Abdallah](https://github.com/aliabdallah7)
+- [Sohila Sayed](https://github.com/SohilaSayed)
+- [Karima Sobhy](https://github.com/contributor3)
+- [Mohammed Ali](https://github.com/MohamedAliAsu)
+- [Ali Maher](https://github.com/Ali-Maher10)
+- [Abdelrahman Abdelhalim](https://github.com/abdohalimaus)
 
 ## Contributions
 
 We highly value contributions from the community to enhance and strengthen this project. If you wish to contribute, we welcome your involvement in the following areas:
 
 ### Adding More Security Algorithms
-- Expand the project's range of security algorithms by introducing new ones. This will enhance the overall security measures and broaden the project's capabilities.
+- Expand the project's range of security algorithms by introducing new ones.
 
 ### Documentation
 - Improve the project's documentation by providing comprehensive explanations, detailed examples, and clear usage guidelines. Well-documented code empowers users to understand and effectively utilize the algorithms.
