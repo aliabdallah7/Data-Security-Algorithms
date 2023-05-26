@@ -1,0 +1,325 @@
+The matrix of cipherText
+58   fa   36   a4   
+e2   7e   7f   e7   
+fc   30   1d   45   
+ce   61   57   5a   
+The matrix of key
+00  00  00  00  
+00  00  00  00  
+00  00  00  00  
+00  00  00  00  
+-------Observe from here the keys : ------
+The result matrix: 
+62  62  62  62  
+63  63  63  63  
+63  63  63  63  
+63  63  63  63  
+The result matrix: 
+9B  F9  9B  F9  
+98  FB  98  FB  
+98  FB  98  FB  
+C9  AA  C9  AA  
+The result matrix: 
+90  69  F2  0B  
+97  6C  F4  0F  
+34  CF  57  AC  
+50  FA  33  99  
+The result matrix: 
+EE  87  75  7E  
+06  6A  9E  91  
+DA  15  42  EE  
+7B  81  B2  2B  
+The result matrix: 
+7F  F8  8D  F3  
+2E  44  DA  4B  
+2B  3E  7C  92  
+88  09  BB  90  
+The result matrix: 
+EC  14  99  6A  
+61  25  FF  B4  
+4B  75  09  9B  
+85  8C  37  A7  
+The result matrix: 
+21  35  AC  C6  
+75  50  AF  1B  
+17  62  6B  F0  
+87  0B  3C  9B  
+The result matrix: 
+0E  3B  97  51  
+F9  A9  06  1D  
+03  61  0A  FA  
+33  38  04  9F  
+The result matrix: 
+B1  8A  1D  4C  
+D4  7D  7B  66  
+D8  B9  B3  49  
+E2  DA  DE  41  
+The result matrix: 
+B4  3E  23  6F  
+EF  92  E9  8F  
+5B  E2  51  18  
+CB  11  CF  8E  
+----------The end of keys : ------
+first Add round key : ----
+EC  C4  15  CB  
+0D  EC  96  68  
+A7  D2  4C  5D  
+05  70  98  D4  
+inverse shift rows result round 0: ----
+EC  C4  15  CB  
+68  0D  EC  96  
+4C  5D  A7  D2  
+70  98  D4  05  
+inverse sub bytes result round 0: ----
+83  88  2f  59  
+f7  f3  83  35  
+5d  8d  89  7f  
+d0  e2  19  36  
+roundkey 9 before switch: ----B1  8A  1D  66  
+D4  7D  7B  49  
+D8  B9  B3  41  
+E2  DA  DE  4C  
+B1  8A  1D  4C  
+D4  7D  7B  66  
+D8  B9  B3  49  
+E2  DA  DE  41  
+32  02  32  15  
+23  8E  F8  53  
+85  34  3A  36  
+32  38  C7  77  
+inverse mix columns result round 0: ----
+1B  35  09  2A  
+D1  E3  0F  36  
+FB  18  6F  07  
+97  4E  5E  1C  
+inverse shift rows result round 1: ----
+1B  35  09  2A  
+36  D1  E3  0F  
+6F  07  FB  18  
+4E  5E  1C  97  
+inverse sub bytes result round 1: ----
+44  d9  40  95  
+24  51  4d  fb  
+06  38  63  34  
+b6  9d  c4  85  
+roundkey 9 before switch: ----B1  8A  1D  4C  
+D4  7D  7B  66  
+D8  B9  B3  49  
+E2  DA  DE  41  
+B1  8A  1D  4C  
+D4  7D  7B  66  
+D8  B9  B3  49  
+E2  DA  DE  41  
+4A  E2  D7  C4  
+DD  F8  4B  E6  
+05  59  69  CE  
+85  A5  C0  1A  
+inverse mix columns result round 1: ----
+F7  9B  BC  AF  
+A2  59  93  6C  
+96  F7  68  52  
+D4  D3  72  67  
+inverse shift rows result round 2: ----
+F7  9B  BC  AF  
+6C  A2  59  93  
+68  52  96  F7  
+D3  72  67  D4  
+inverse sub bytes result round 2: ----
+26  e8  78  1b  
+b8  1a  15  22  
+f7  48  35  26  
+a9  1e  0a  19  
+roundkey 9 before switch: ----B1  8A  1D  4C  
+D4  7D  7B  66  
+D8  B9  B3  49  
+E2  DA  DE  41  
+B1  8A  1D  4C  
+D4  7D  7B  66  
+D8  B9  B3  49  
+E2  DA  DE  41  
+07  DD  D4  DD  
+CD  4A  BA  39  
+E0  2A  5E  D6  
+2E  15  36  82  
+inverse mix columns result round 2: ----
+1D  86  20  65  
+12  72  59  61  
+F2  3A  A6  15  
+F9  66  D9  A1  
+inverse shift rows result round 3: ----
+1D  86  20  65  
+61  12  72  59  
+A6  15  F2  3A  
+66  D9  A1  F9  
+inverse sub bytes result round 3: ----
+de  dc  54  bc  
+d8  39  1e  15  
+c5  2f  04  a2  
+d3  e5  f1  69  
+roundkey 9 before switch: ----B1  8A  1D  4C  
+D4  7D  7B  66  
+D8  B9  B3  49  
+E2  DA  DE  41  
+B1  8A  1D  4C  
+D4  7D  7B  66  
+D8  B9  B3  49  
+E2  DA  DE  41  
+32  C8  CD  D6  
+B9  1C  E1  A1  
+8E  5A  0D  39  
+56  69  C6  CE  
+inverse mix columns result round 3: ----
+04  9B  26  45  
+BB  C1  20  C1  
+1E  DC  33  B1  
+F2  61  D2  B5  
+inverse shift rows result round 4: ----
+04  9B  26  45  
+C1  BB  C1  20  
+33  B1  1E  DC  
+61  D2  B5  F2  
+inverse sub bytes result round 4: ----
+30  e8  23  68  
+dd  fe  dd  54  
+66  56  e9  93  
+d8  7f  d2  04  
+roundkey 9 before switch: ----B1  8A  1D  4C  
+D4  7D  7B  66  
+D8  B9  B3  49  
+E2  DA  DE  41  
+B1  8A  1D  4C  
+D4  7D  7B  66  
+D8  B9  B3  49  
+E2  DA  DE  41  
+4F  10  AE  9B  
+F3  BA  07  1F  
+4D  68  95  01  
+50  76  69  94  
+inverse mix columns result round 4: ----
+FA  C7  C0  4F  
+F0  7B  50  A0  
+A1  CC  51  F7  
+0A  C4  94  09  
+inverse shift rows result round 5: ----
+FA  C7  C0  4F  
+A0  F0  7B  50  
+51  F7  A1  CC  
+C4  94  09  0A  
+inverse sub bytes result round 5: ----
+14  31  1f  92  
+47  17  03  6c  
+70  26  f1  27  
+88  e7  40  a3  
+roundkey 9 before switch: ----B1  8A  1D  4C  
+D4  7D  7B  66  
+D8  B9  B3  49  
+E2  DA  DE  41  
+B1  8A  1D  4C  
+D4  7D  7B  66  
+D8  B9  B3  49  
+E2  DA  DE  41  
+FA  B6  6A  EC  
+41  7D  9D  FD  
+AA  33  B3  C9  
+F3  66  F2  88  
+inverse mix columns result round 5: ----
+7F  1B  A7  BC  
+C1  8F  17  BC  
+F0  B9  09  39  
+AC  B3  0F  69  
+inverse shift rows result round 6: ----
+7F  1B  A7  BC  
+BC  C1  8F  17  
+09  39  F0  B9  
+B3  0F  69  AC  
+inverse sub bytes result round 6: ----
+6b  44  89  78  
+78  dd  73  87  
+40  5b  17  db  
+4b  fb  e4  aa  
+roundkey 9 before switch: ----B1  8A  1D  4C  
+D4  7D  7B  66  
+D8  B9  B3  49  
+E2  DA  DE  41  
+B1  8A  1D  4C  
+D4  7D  7B  66  
+D8  B9  B3  49  
+E2  DA  DE  41  
+FB  2D  7B  73  
+EF  B1  87  88  
+74  94  40  77  
+1B  01  D7  33  
+inverse mix columns result round 6: ----
+57  9D  6A  BE  
+B1  4C  57  87  
+2E  36  87  DF  
+B3  EE  D1  59  
+inverse shift rows result round 7: ----
+57  9D  6A  BE  
+87  B1  4C  57  
+87  DF  2E  36  
+EE  D1  59  B3  
+inverse sub bytes result round 7: ----
+da  75  58  5a  
+ea  56  5d  da  
+ea  ef  c3  24  
+99  51  15  4b  
+roundkey 9 before switch: ----B1  8A  1D  4C  
+D4  7D  7B  66  
+D8  B9  B3  49  
+E2  DA  DE  41  
+B1  8A  1D  4C  
+D4  7D  7B  66  
+D8  B9  B3  49  
+E2  DA  DE  41  
+41  8C  C3  A3  
+72  AD  C5  21  
+72  14  5B  DF  
+50  FB  DC  E1  
+inverse mix columns result round 7: ----
+72  7C  7C  7C  
+63  63  63  C0  
+63  63  FD  63  
+63  B2  63  63  
+inverse shift rows result round 8: ----
+72  7C  7C  7C  
+C0  63  63  63  
+FD  63  63  63  
+B2  63  63  63  
+inverse sub bytes result round 8: ----
+1e  01  01  01  
+1f  00  00  00  
+21  00  00  00  
+3e  00  00  00  
+roundkey 9 before switch: ----B1  8A  1D  4C  
+D4  7D  7B  66  
+D8  B9  B3  49  
+E2  DA  DE  41  
+B1  8A  1D  4C  
+D4  7D  7B  66  
+D8  B9  B3  49  
+E2  DA  DE  41  
+7C  63  63  63  
+7C  63  63  63  
+42  63  63  63  
+5D  63  63  63  
+inverse mix columns result round 8: ----
+63  63  63  63  
+63  63  63  63  
+63  63  63  63  
+7C  63  63  63  
+outer inverse shift rows result : ---
+63  63  63  63  
+63  63  63  63  
+63  63  63  63  
+63  63  63  7C  
+outer inverse sub bytes result : ---
+00  00  00  00  
+00  00  00  00  
+00  00  00  00  
+00  00  00  01  
+outer key matrix result : ---
+00  00  00  00  
+00  00  00  00  
+00  00  00  00  
+00  00  00  00  
