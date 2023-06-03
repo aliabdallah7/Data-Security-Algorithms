@@ -32,17 +32,6 @@ We have developed implementations of a comprehensive set of computer security al
 - ❌ MD5 (Message-Digest)
 <br>
 
-## Contributors (Team Members)
-
-We would like to acknowledge the dedicated efforts and contributions of our team members in making this project a success:
-
-- [Ali Abdallah](https://github.com/aliabdallah7)
-- [Sohila Sayed](https://github.com/SohilaSayed)
-- [Karima Sobhy](https://github.com/contributor3)
-- [Mohammed Ali](https://github.com/MohamedAliAsu)
-- [Ali Maher](https://github.com/Ali-Maher10)
-- [Abdelrahman Abdelhalim](https://github.com/abdohalimaus)
-
 ## Contributions
 
 We highly value contributions from the community to enhance and strengthen this project. If you wish to contribute, we welcome your involvement in the following areas:
